@@ -12,6 +12,9 @@ function Home() {
       <Link href="/blog">
         <a>Blog </a>
       </Link>
+      <Link href="/profile">
+        <a>Profile </a>
+      </Link>
       <hr />
       <h1>Home Page</h1>
     </>
