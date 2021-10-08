@@ -1,7 +1,18 @@
-import Head from "next/head"
-import Image from "next/image"
-import styles from "../styles/Home.module.css"
+import Link from "next/link"
 
 export default function Home() {
-  return <h1>Home apge</h1>
+  return (
+    <>
+      <div>
+        <Link href="/users">
+          <a>User List </a>
+        </Link>
+        <Link href="/posts">
+          <a>Post List </a>
+        </Link>
+      </div>
+      <hr />
+      <h1>Home apge</h1>
+    </>
+  )
 }
