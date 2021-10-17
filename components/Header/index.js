@@ -1,7 +1,30 @@
+import Link from "next/link"
+import { useSession } from "next-auth/react"
+// Styles
 import styles from "./Header.module.css"
 
 function Header() {
-  return <div className={styles.container}></div>
+  const { data: session, status } = useSession()
+  console.log(session)
+  console.log(status)
+  if (status == "loading") {
+    return <div>Loading...</div>
+  } else if (status == "authenticated") {
+    return (
+      <>
+        <div>
+          {session.user.email} | {session.user.name}
+        </div>
+      </>
+    )
+  }
+  return (
+    <>
+      <Link href="/signin">
+        <a>Sign in</a>
+      </Link>
+    </>
+  )
 }
 
 export default Header

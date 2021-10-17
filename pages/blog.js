@@ -1,20 +1,11 @@
 import Link from "next/link"
-import { signIn } from "next-auth/client"
+import Header from "../components/Header"
 
 function Blog() {
   return (
     <>
+      <Header />
       <h1>Blog page</h1>
-      <Link href="/api/auth/signin">
-        <a
-          onClick={(e) => {
-            e.preventDefault()
-            signIn("google")
-          }}
-        >
-          Sign in with Google
-        </a>
-      </Link>
     </>
   )
 }
