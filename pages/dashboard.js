@@ -16,6 +16,7 @@ export default function Dashboard() {
     return (
       <>
         <Header />
+        <h1>Dashboard page</h1>
         <div>Hello, {session.user.name}</div>
         <div>Email : {session.user.email}</div>
       </>

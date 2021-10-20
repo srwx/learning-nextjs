@@ -8,9 +8,6 @@ import FacebookProvider from "next-auth/providers/facebook"
 
 export default async function auth(req, res) {
   return await NextAuth(req, res, {
-    adapter: MongoDBAdapter({
-      db: (await clientPromise).db("your-database"),
-    }),
     providers: [
       GitHubProvider({
         clientId: process.env.GITHUB_ID,
@@ -25,5 +22,14 @@ export default async function auth(req, res) {
         clientSecret: process.env.FACEBOOK_SECRET,
       }),
     ],
+    pages: {
+      signIn: "http://localhost:3000/signin", // ถ้า url เป็น /api/auth/signin ให้ไปที่ localhost:3000/signin
+    },
+    session: {
+      jwt: true, // ใช้ jwt แทน database session (ใน db จะไม่มี collection session)
+    },
+    adapter: MongoDBAdapter({
+      db: (await clientPromise).db("your-database"), // "your-database" คือชื่อ database, NextAuth จะสร้าง 3 Collection : accounts, sessions, users
+    }),
   })
 }

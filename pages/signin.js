@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn, useSession } from "next-auth/react"
 // Styles
 import styles from "../styles/Signin.module.css"
 
@@ -9,7 +9,7 @@ function Signin() {
   const { data: session, status } = useSession()
 
   const handleSignin = (provider) => {
-    signIn(provider, { callbackUrl: "http://localhost:3000/dashboard" })
+    signIn(provider)
   }
 
   if (status == "loading") {
